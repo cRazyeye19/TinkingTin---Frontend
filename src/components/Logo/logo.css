@@ -1,0 +1,29 @@
+.logohead {
+    line-height: 1;
+    text-decoration: none;
+}
+
+@media (min-width: 1200px) {
+    .logohead {
+        width: 280px;
+    }
+}
+
+.logohead img {
+    max-height: 26px;
+    margin-right: 6px;
+}
+
+.logohead span {
+    font-size: 26px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+}
+
+.title1 {
+    color: #3D3F42;
+}
+
+.title2{
+    color: #4154f1;
+}

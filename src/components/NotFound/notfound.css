@@ -1,0 +1,9 @@
+.image-size {
+    width: 25%;
+}
+
+.error-msg {
+    font-size: 0.85rem;
+    color: #3D3F42;
+    font-weight: 700;
+}

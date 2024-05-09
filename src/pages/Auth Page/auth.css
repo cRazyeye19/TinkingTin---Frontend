@@ -1,0 +1,109 @@
+.subtitle {
+    font-size: 0.725rem;
+    text-align: center;
+    line-height: 1.1rem;
+}
+
+.toast-animation {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    /* Fade-in transition effect */
+}
+
+.toast-animation.show {
+    opacity: 1;
+}
+
+.app-name {
+    width: 64;
+    height: 64;
+}
+
+.app-name h3 {
+    font-size: 25px;
+    font-weight: bold !important;
+    color: #3D3F42;
+    margin-top: 5px;
+}
+
+.app-name span {
+    font-size: 25px;
+    font-weight: bold !important;
+    color: #4154f1;
+    margin-top: 5px;
+}
+
+.title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #3D3F42;
+}
+
+.input_label {
+    font-size: small;
+    color: #3D3F42;
+    font-weight: 600;
+}
+
+.input_field {
+    padding: 10px;
+    outline: none;
+    border: 1px solid #e5e5e5;
+    filter: drop-shadow(0px 1px 0px #efefef) drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+    transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.sign-in_btn {
+    width: 100%;
+    height: 40px;
+    border: 0;
+    background-color: #4154f1;
+    border-radius: 8px;
+    outline: none;
+    color: #ffffff;
+    cursor: pointer;
+    box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
+}
+
+.sign-in_btn:hover {
+    background-color: #717ff5;
+}
+
+.btn-1,
+.btn-2 {
+    padding: 0.5em;
+    padding-left: 1.1em;
+    padding-right: 1.1em;
+    border-radius: 8px;
+    margin-right: 0.5em;
+    border: none;
+    outline: none;
+    transition: .4s ease-in-out;
+    background-color: #4154f1;
+    color: #ffffff;
+    box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
+}
+
+.p {
+    text-align: center;
+    color: #3D3F42;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 5px 0;
+}
+
+.span {
+    font-size: 14px;
+    margin-left: 5px;
+    color: #4154f1;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.forgot-pass {
+    color: #4154f1;
+    font-weight: 500;
+    font-size: 0.75rem;
+    cursor: pointer;
+}

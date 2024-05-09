@@ -1,0 +1,35 @@
+.edit,
+.delete {
+    cursor: pointer;
+}
+
+.edit-disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+th,
+td {
+    text-align: center;
+    font-size: 14px;
+}
+
+.data {
+    font-weight: 500;
+    line-height: normal;
+}
+
+.data-title {
+    font-weight: 500;
+    color: #4154f1;
+}
+
+.page-link {
+    color: #3D3F42;
+    cursor: pointer;
+}
+
+.btn-size {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+}

@@ -1,0 +1,26 @@
+.header .user-name{
+    min-width: 360px;
+    padding: 0 20px;
+}
+
+@media (max-width: 1200px) {
+    .header .user-name{
+        position: fixed;
+        top: 50px;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        box-shadow: 0px 0px 15px 0px rgba(1, 41 ,112, 0.1);
+        background: white;
+        z-index: 999;
+        transition: 0.3s;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .header .user-name.show{
+        top: 60px;
+        visibility: visible;
+        opacity: 1;
+    }
+}

@@ -1,0 +1,17 @@
+.imgContainer {
+    background: linear-gradient(29deg, #f5d4d473 0%, #ffffff48 35%);
+}
+
+.about{
+    color: #3D3F42;
+    font-weight: bold;
+}
+
+.wrapper{
+    margin-top: 100px;
+    /* margin-bottom: 100px; */
+}
+
+.button-wrapper{
+    margin-top: 100px;
+}

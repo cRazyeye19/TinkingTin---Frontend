@@ -1,0 +1,15 @@
+.cardform {
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.profile {
+    object-fit: cover;
+}
+
+.role {
+    font-size: 10px;
+    color: #3D3F42;
+    font-style: italic;
+}

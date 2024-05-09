@@ -1,0 +1,218 @@
+ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.row h3 {
+    color: #3D3F42;
+    font-size: 30px;
+    font-weight: bold !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 35px;
+}
+
+.services {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding-top: 30px;
+}
+
+.services h5 {
+    font-weight: bold !important;
+    font-size: 35px;
+    color: #3D3F42;
+}
+
+.single-cta{
+    margin: 15px 0;
+}
+
+.footer-section {
+    background: rgb(255, 227, 227);
+    background: linear-gradient(29deg, #ffe3e3 0%, #ffffff 35%);
+    position: relative;
+}
+
+.footer-cta {
+    border-bottom: 1px solid #3D3F42;
+}
+
+.single-cta i {
+    color: #4154f1;
+    font-size: 30px;
+    float: left;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.cta-text {
+    padding-left: 15px;
+    display: inline-block;
+}
+
+.cta-text h4 {
+    color: #4154f1;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.cta-text span {
+    color: #3D3F42;
+    font-size: 15px;
+}
+
+.footer-content {
+    position: relative;
+    z-index: 2;
+}
+
+.footer-pattern img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 330px;
+    background-size: cover;
+    background-position: 100% 100%;
+}
+
+.footer-logo {
+    margin-bottom: 30px;
+}
+
+.footer-logo h4 {
+    color: #4154f1;
+    font-weight: bold !important;
+}
+
+.footer-text p {
+    margin-bottom: 14px;
+    font-size: 14px;
+    color: #3D3F42;
+    line-height: 28px;
+}
+
+.footer-social-icon button {
+    align-items: flex-start;
+    background-image: linear-gradient(0deg, #4154f1 0%, #717ff5 35%);
+    border-radius: 4px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 6px 20px;
+    text-align: center;
+    text-transform: capitalize;
+    border: none;
+}
+
+.footer-social-icon button:hover {
+    background: #3D3F42;
+}
+
+.footer-social-icon a {
+    color: #4154f1;
+    font-size: 25px;
+    margin-right: 15px;
+}
+
+.footer-social-icon {
+    margin-top: 20px;
+}
+
+.footer-social-icon a:hover {
+    color: #3D3F42;
+}
+
+.footer-social-icon i {
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    line-height: 38px;
+    border-radius: 50%;
+}
+
+.footer-widget-heading h3 {
+    color: #4154f1;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    position: relative;
+}
+
+.footer-widget-heading h3::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    height: 2px;
+    width: 50px;
+    color: #4154f1;
+}
+
+.footer-widget ul li {
+    display: inline-block;
+    /* float: left; */
+    width: 50%;
+    margin-bottom: 12px;
+}
+
+.footer-widget ul li a:hover {
+    color: #4154f1;
+    text-decoration: underline;
+}
+
+.footer-widget ul li a {
+    color: #3D3F42;
+    text-transform: capitalize;
+}
+
+.subscribe-form {
+    position: relative;
+}
+
+.subscribe-form input {
+    width: 100%;
+    padding: 14px 28px;
+    background: #fff;
+    border: 1px solid;
+    color: #3D3F42;
+    border-radius: 10px;
+}
+
+.subscribe-form button {
+    position: absolute;
+    right: 0;
+    color: #4154f1;
+    padding: 9.5px 20px;
+    border: 1px solid #3D3F42;
+    top: 0;
+    border-radius: 0px 10px 10px 0px;
+}
+
+.subscribe-form button i {
+    color: #717ff5;
+    font-size: 22px;
+    transform: rotate(-6deg);
+}
+
+.copyright-area {
+    /* background: #fff; */
+    padding: 25px 0;
+    box-shadow: rgba(0, 0, 0, 0.075) 0px 2px 4px 0px;
+}
+
+.copyright-text p {
+    margin: 0;
+    font-size: 14px;
+    color: #3D3F42;
+}
+
+.copyright-text p a {
+    color: #4154f1;
+}
