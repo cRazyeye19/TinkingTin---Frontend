@@ -124,21 +124,24 @@ function ProfileEdit({ editProfile, setEditProfile, data }) {
                             </>
                         )}
 
-                        <div className='mt-3' />
 
-                        <label className='form-label d-flex input_label'>Department</label>
-                        <input
-                            title="Department"
-                            type="text"
-                            className='form-control edit_field'
-                            name='department'
-                            onChange={handleChange}
-                            value={formData.department}
-                            disabled={user.role === "Department" || user.role === "Faculty"}
-                        />
+                        {(user.role === "Department" || user.role === "Faculty") && (
+                            <>
+                                <div className='mt-3' />
+                                <label className='form-label d-flex input_label'>Department</label>
+                                <input
+                                    title="Department"
+                                    type="text"
+                                    className='form-control edit_field'
+                                    name='department'
+                                    onChange={handleChange}
+                                    value={formData.department}
+                                    disabled={user.role === "Department" || user.role === "Faculty"}
+                                />
+                            </>
+                        )}
                     </div>
                 </div>
-                <div className='mt-3' />
 
                 {user.role !== "Department" && user.role !== "Faculty" && (
                     <>

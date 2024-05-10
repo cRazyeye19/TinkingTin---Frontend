@@ -7,8 +7,11 @@ import { forgotPass } from '../../actions/AuthAction';
 
 const Reset = () => {
   const [showToast, setShowToast] = useState(false);
+  const [showConfirmToast, setShowConfirmToast] = useState(false);
+  const [confirmPass, setConfirmPass] = useState(false);
   const [data, setData] = useState({ password: '', confirmPassword: '' });
-  const [confirmPass, setConfirmPass] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPass, setShowConfirmPass] = useState(false);
   const { id, token } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -24,23 +27,33 @@ const Reset = () => {
     }, 2000);
   }
 
-  const resetForm = () => {
-    setConfirmPass(true);
-    setData({ password: '', confirmPassword: '' });
+  const handleConfirmToast = () => {
+    setShowConfirmToast((prev) => !prev);
+    setTimeout(() => {
+      setShowConfirmToast((prev) => !prev);
+      navigate('/auth');
+    }, 2000);
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let updatedPassword = {
-      password: data.password
-    };
-    if (data.password === data.confirmPassword) {
-      dispatch(forgotPass(id, token, updatedPassword));
+
+    const isEmpty = Object.values(data).some((value) => value === '');
+    const buttonClicked = e.nativeEvent.submitter;
+    const buttonType = buttonClicked.getAttribute('type');
+
+    if (isEmpty && buttonType === 'submit') {
       handleToast();
-      resetForm();
-      navigate('/auth');
-    } else {
-      setConfirmPass(false);
+      return
+    } 
+    if (data.password !== data.confirmPassword && buttonType === 'submit') {
+      setConfirmPass(true);
+    } else if (data.password === data.confirmPassword && buttonType === 'submit') {
+      let updatedPassword = {
+        password: data.password
+      };
+      dispatch(forgotPass(id, token, updatedPassword));
+      handleConfirmToast();
     }
   }
 
@@ -49,19 +62,28 @@ const Reset = () => {
       <div className='d-flex align-items-center justify-content-between'>
         <div className='app-name mx-2 mt-2 d-flex justify-content-between'>
           <h3>Tinking<span>Tin</span></h3>
-          {showToast && (
-            <div className='toast-animation show'>
-              <Toast className='position-absolute top-0 start-50 translate-middle-x m-2'>
-                <Toast.Header closeButton={false}>
-                  <strong className="me-auto">TinkingTin</strong>
-                </Toast.Header>
-                <Toast.Body>
-                  <i className='bi bi-check-circle-fill me-2 text-primary'></i>
-                  Password reset succesful.
-                </Toast.Body>
-              </Toast>
-            </div>
-          )}
+          <div className={showToast ? 'toast-animation show' : 'toast-animation hide'}>
+            <Toast className='position-absolute top-0 start-50 translate-middle-x m-2'>
+              <Toast.Header closeButton={false}>
+                <strong className="me-auto">TinkingTin</strong>
+              </Toast.Header>
+              <Toast.Body className='text-center'>
+                <i className='bi bi-exclamation-circle-fill me-2 text-danger'></i>
+                Please provide new password.
+              </Toast.Body>
+            </Toast>
+          </div>
+          <div className={showConfirmToast ? 'toast-animation show' : 'toast-animation hide'}>
+            <Toast className='position-absolute top-0 start-50 translate-middle-x m-2'>
+              <Toast.Header closeButton={false}>
+                <strong className="me-auto">TinkingTin</strong>
+              </Toast.Header>
+              <Toast.Body className='text-center'>
+                <i className='bi bi-check-circle-fill me-2 text-primary'></i>
+                Reset Password Successful.
+              </Toast.Body>
+            </Toast>
+          </div>
         </div>
       </div>
       <div className='container py-5 h-100'>
@@ -74,35 +96,50 @@ const Reset = () => {
               <form onSubmit={handleSubmit} className='card-body p-5 text-center'>
                 <h3 className='title mb-3'>Reset Password</h3>
                 <p className='subtitle mb-4 text-muted'>
-                  Please provide you new password
+                  Please enter your new password
                 </p>
 
                 {/* New Password Input Field */}
                 <div className='form-outline mb-3'>
-                  <label for="typePasswordX-2" className='form-label d-flex input_label'>New Password</label>
-                  <input
-                    type="password"
-                    className='form-control'
-                    placeholder='New Password'
-                    name='password'
-                    onChange={handleChange}
-                    value={data.password} />
+                  <label className='form-label d-flex input_label'>New Password</label>
+                  <div className='input-group'>
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      className='form-control'
+                      placeholder='New Password'
+                      name='password'
+                      onChange={handleChange}
+                      value={data.password}
+                    />
+                    <div className='input-group-append'>
+                      <button className='input-group-text' onClick={() => setShowPassword((prev) => !prev)}>
+                        <i className={`bi ${showPassword ? 'bi-eye-fill' : 'bi-eye-slash-fill'}`}></i>
+                      </button>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Confirm New Password Input Field */}
                 <div className='form-outline mb-3'>
-                  <label for="typePasswordX-2" className='form-label d-flex input_label'>Confirm New Password</label>
-                  <input
-                    type="password"
-                    id='typePasswordX-2'
-                    className='form-control'
-                    placeholder='Confirm New Password'
-                    name='confirmPassword'
-                    onChange={handleChange}
-                    value={data.confirmPassword} />
+                  <label className='form-label d-flex input_label'>Confirm New Password</label>
+                  <div className='input-group'>
+                    <input
+                      type={showConfirmPass ? 'text' : 'password'}
+                      className='form-control'
+                      placeholder='Confirm New Password'
+                      name='confirmPassword'
+                      onChange={handleChange}
+                      value={data.confirmPassword}
+                    />
+                    <div className='input-group-append'>
+                      <button className='input-group-text' onClick={() => setShowConfirmPass((prev) => !prev)}>
+                        <i className={`bi ${showConfirmPass ? 'bi-eye-fill' : 'bi-eye-slash-fill'}`}></i>
+                      </button>
+                    </div>
+                  </div>
                 </div>
 
-                {!confirmPass && (
+                {confirmPass && (
                   <span className='subtitle mb-4 text-danger d-flex fw-medium'>*Passwords do not match</span>
                 )}
 

@@ -9,6 +9,7 @@ import { getAllUsers } from '../../actions/UserAction';
 const Forgot = () => {
     const [showToast, setShowToast] = useState(false);
     const [existsToast, setExistsToast] = useState(false);
+    const [showSuccess, setShowSuccess] = useState(false);
     const [submit, setSubmit] = useState(false);
     const [data, setData] = useState({ username: '' });
     const dispatch = useDispatch();
@@ -43,9 +44,15 @@ const Forgot = () => {
                 setExistsToast(false);
             }, 2000);
             return;
+        } else {
+            let userData = { username: data.username };
+            dispatch(resetPass(userData));
+            setShowSuccess(true);
+            setTimeout(() => {
+                setShowSuccess(false);
+            }, 2000);
+            return;
         }
-        let userData = { username: data.username };
-        dispatch(resetPass(userData));
     }
 
     return (
@@ -59,7 +66,7 @@ const Forgot = () => {
                                 <Toast.Header closeButton={false}>
                                     <strong className="me-auto">TinkingTin</strong>
                                 </Toast.Header>
-                                <Toast.Body>
+                                <Toast.Body className='text-center'>
                                     <i className='bi bi-exclamation-circle-fill me-2 text-danger'></i>
                                     Please provide an email address.
                                 </Toast.Body>
@@ -72,9 +79,22 @@ const Forgot = () => {
                                 <Toast.Header closeButton={false}>
                                     <strong className="me-auto">TinkingTin</strong>
                                 </Toast.Header>
-                                <Toast.Body>
+                                <Toast.Body className='text-center'>
                                     <i className='bi bi-exclamation-circle-fill me-2 text-danger'></i>
-                                    Provided email address does not exist.
+                                    Provided email address is not registered.
+                                </Toast.Body>
+                            </Toast>
+                        </div>
+                    )}
+                    {(showSuccess && submit) && (
+                        <div className='toast-animation show'>
+                            <Toast className='position-absolute top-0 start-50 translate-middle-x m-2'>
+                                <Toast.Header closeButton={false}>
+                                    <strong className="me-auto">TinkingTin</strong>
+                                </Toast.Header>
+                                <Toast.Body className='text-center'>
+                                    <i className='bi bi-exclamation-circle-fill me-2 text-danger'></i>
+                                    Request Successful. Please check your email.
                                 </Toast.Body>
                             </Toast>
                         </div>
@@ -100,7 +120,7 @@ const Forgot = () => {
                                     <input
                                         type="email"
                                         className='form-control'
-                                        placeholder='name@cit.edu'
+                                        placeholder='name@hotmail.com'
                                         name='username'
                                         onChange={handleChange}
                                         value={data.username}
