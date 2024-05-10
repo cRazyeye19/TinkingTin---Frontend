@@ -179,7 +179,7 @@ function EditModal({ ticketId, showModal, setShowModal }) {
                   required
                 >
                 </textarea>
-                <div className='d-flex mt-2'>
+                <div className='d-flex my-2'>
                   <button className='btn btn-primary btn-sm' onClick={handleCommentSubmit}>Post Comment</button>
                 </div>
 
