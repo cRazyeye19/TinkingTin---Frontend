@@ -128,7 +128,7 @@ function EditModal({ ticketId, showModal, setShowModal }) {
 
   return (
     <>
-      <Modal show={showModal} onHide={() => setShowModal(false)} size='lg'>
+      <Modal show={showModal} onHide={() => setShowModal(false)} size='xl'>
         <ModalHeader>
           <ModalTitle>
             <span className='title'>Ticket <span className='title-2'>Details</span></span>
@@ -136,7 +136,7 @@ function EditModal({ ticketId, showModal, setShowModal }) {
         </ModalHeader>
         <ModalBody>
           <div className='row'>
-            <div className='col-md-7'>
+            <div className='col-md-8'>
               <label className='form-label d-flex edit_label'>Issue</label>
               <Select
                 className="basic-single edit_label"
@@ -185,7 +185,7 @@ function EditModal({ ticketId, showModal, setShowModal }) {
                 <Comments ticketId={ticketId} />
               </>
             </div>
-            <div className='col-md-5'>
+            <div className='col-md-4'>
               <label className='form-label d-flex edit_label'>Status</label>
               <Select
                 className="basic-single edit_label"
@@ -263,33 +263,35 @@ function EditModal({ ticketId, showModal, setShowModal }) {
 
               <div className='mt-3' />
 
-              <div className='d-flex justify-content-between '>
-                <label className='form-label d-flex edit_label-time align-items-center'>Time Alloted (Hours)</label>
-                <label className='form-label d-flex edit_label-time align-items-center'>Total Time (Hours)</label>
-              </div>
-              <div className='d-flex justify-content-between'>
-                <input
-                  type="text"
-                  className='form-control edit_field'
-                  defaultValue={timeAllotted}
-                  value={timeAllotted}
-                  readOnly={userRole === 'User' ? true : false}
-                  onChange={(e) => {
-                    const value = e.target.value.trim();
-                    setTimeAllotted(value === "" ? 0 : parseInt(value));
-                  }}
-                />
-                <input
-                  type="text"
-                  defaultValue={totalTime}
-                  className='form-control edit_field ms-2'
-                  value={totalTime}
-                  readOnly={userRole === 'User' || userRole === 'Faculty' ? true : false}
-                  onChange={(e) => {
-                    const value = e.target.value.trim();
-                    setTotalTime(value === "" ? 0 : parseInt(value));
-                  }}
-                />
+              <div className="row">
+                <div className="col">
+                  <label className='form-label d-flex edit_label-time align-items-center'>Time Alloted (Hours)</label>
+                  <input
+                    type="text"
+                    className='form-control edit_field'
+                    defaultValue={timeAllotted}
+                    value={timeAllotted}
+                    readOnly={userRole === 'User' ? true : false}
+                    onChange={(e) => {
+                      const value = e.target.value.trim();
+                      setTimeAllotted(value === "" ? 0 : parseInt(value));
+                    }}
+                  />
+                </div>
+                <div className="col">
+                  <label className='form-label d-flex edit_label-time align-items-center'>Total Time (Hours)</label>
+                  <input
+                    type="text"
+                    defaultValue={totalTime}
+                    className='form-control edit_field'
+                    value={totalTime}
+                    readOnly={userRole === 'User' || userRole === 'Faculty' ? true : false}
+                    onChange={(e) => {
+                      const value = e.target.value.trim();
+                      setTotalTime(value === "" ? 0 : parseInt(value));
+                    }}
+                  />
+                </div>
               </div>
               <div className='mt-2'>
                 {error && <span className='text-danger error-label'>{error}</span>}
