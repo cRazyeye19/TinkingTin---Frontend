@@ -3,6 +3,8 @@ import Modal from 'react-bootstrap/Modal'
 import ModalHeader from 'react-bootstrap/esm/ModalHeader'
 import ModalTitle from 'react-bootstrap/esm/ModalTitle'
 import ModalBody from 'react-bootstrap/esm/ModalBody'
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import Select from 'react-select'
 import { format } from 'timeago.js'
 import { useDispatch, useSelector } from 'react-redux'
@@ -154,16 +156,13 @@ function EditModal({ ticketId, showModal, setShowModal }) {
               <hr />
 
               <label className='form-label d-flex edit_label'>Description</label>
-              <textarea
-                name="description"
-                rows="5"
-                className='form-control edit_field'
-                maxLength="500"
+              <ReactQuill
+                theme='snow'
                 value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                disabled={userRole === 'Admin' || userRole === 'User' ? false : true}
+                onChange={(value) => setDescription(value)}
+                readOnly={userRole === 'Admin' || userRole === 'User' ? false : true}
               >
-              </textarea>
+              </ReactQuill>
 
               <hr />
 
@@ -171,7 +170,7 @@ function EditModal({ ticketId, showModal, setShowModal }) {
               <>
                 <textarea
                   name="comment"
-                  rows="3"
+                  rows="2"
                   placeholder='Add a comment...'
                   className='form-control edit_field'
                   maxLength="500"

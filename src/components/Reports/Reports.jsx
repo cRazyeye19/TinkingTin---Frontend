@@ -44,7 +44,7 @@ const Reports = () => {
           horizontal: true
         }
       },
-      colors: ['#ffcc00', '#00cc00', '#ff0000'],
+      colors: ['#00cc00', '#ffcc00', '#ff0000'],
     },
   };
 

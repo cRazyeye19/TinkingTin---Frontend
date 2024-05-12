@@ -1,10 +1,12 @@
+import './ticket.css';
+import Select from 'react-select';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import Modal from 'react-bootstrap/Modal';
 import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Select from 'react-select';
-import Modal from 'react-bootstrap/Modal';
 import LoadSpinners from '../LoadSpinners/LoadSpinners';
 import { createTicket } from '../../actions/TicketAction';
-import './ticket.css';
 
 function TicketModal({ showTicket, setShowTicket }) {
     const loading = useSelector((state) => state.ticketReducer.uploading);
@@ -32,9 +34,9 @@ function TicketModal({ showTicket, setShowTicket }) {
 
     const issueList = [
         { label: 'Bug', value: 'Bug' },
-        {label: 'Maintenance', value: 'Maintenance'},
-        {label: 'Finance', value: 'Finance'},
-        {label: 'Missing', value: 'Missing'},
+        { label: 'Maintenance', value: 'Maintenance' },
+        { label: 'Finance', value: 'Finance' },
+        { label: 'Missing', value: 'Missing' },
     ]
 
 
@@ -104,7 +106,11 @@ function TicketModal({ showTicket, setShowTicket }) {
                     <hr />
 
                     <label className='form-label d-flex input_label'>Description</label>
-                    <textarea type="text" rows="3" maxLength="500" className='form-control input_field' ref={description} required />
+                    <ReactQuill
+                        theme="snow"
+                        ref={description}
+                        required
+                    />
                     <span className={`input_label-2 ${showError ? 'error-text' : ''}`}>{showError ? '*This field is required!' : 'Concisely summarize the issue in one or two sentences.'}</span>
 
                     <hr />

@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
 import './ticketTable.css'
-import FactEdit from '../Edit Ticket/FactEdit';
+import DOMPurify from 'dompurify';
+import React, { useState } from 'react'
 import NotFound from '../NotFound/NotFound';
+import FactEdit from '../Edit Ticket/FactEdit';
 import Button from 'react-bootstrap/esm/Button';
 
 const truncateText = (text, length) => {
@@ -20,6 +21,10 @@ const getPriorityColor = (priority) => {
         default:
             return 'bg-secondary';
     }
+};
+
+const stripHtmlTags = (htmlString) => {
+    return htmlString.replace(/(<([^>]+)>)/gi, '');
 };
 
 const AssignedTable = ({ filteredTickets }) => {
@@ -84,7 +89,9 @@ const AssignedTable = ({ filteredTickets }) => {
                                     <span title={ticket.issue} className='data-title'>{ticket.issue}</span>
                                 </td>
                                 <td>
-                                    <span title='Details' className='data'>{truncateText(ticket.description, 20)}</span>
+                                    <span title='Details' className='data'>
+                                        {truncateText(DOMPurify.sanitize(stripHtmlTags(ticket.description)), 20)}
+                                    </span>
                                 </td>
                                 <td>
                                     <span title={ticket.status} className='data'>{ticket.status}</span>
