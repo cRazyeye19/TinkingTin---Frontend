@@ -185,7 +185,7 @@ const Auth = () => {
                       value={data.password}
                     />
                     <div className='input-group-append'>
-                      <button className='input-group-text' onClick={togglePassword}>
+                      <button className='input-group-text' onClick={togglePassword} type="button">
                         <i className={`bi ${showPassword ? 'bi-eye-fill' : 'bi-eye-slash-fill'}`}></i>
                       </button>
                     </div>
@@ -210,7 +210,7 @@ const Auth = () => {
                         value={data.confirmPassword}
                       />
                       <div className='input-group-append'>
-                        <button className='input-group-text' onClick={toggleConfirmPassword}>
+                        <button className='input-group-text' onClick={toggleConfirmPassword} type="button">
                           <i className={`bi ${showConfirmPass ? 'bi-eye-fill' : 'bi-eye-slash-fill'}`}></i>
                         </button>
                       </div>
