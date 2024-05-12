@@ -10,8 +10,10 @@ const CardClosed = () => {
     const [openTicketsCount, setOpenTicketsCount] = useState(0);
 
     useEffect(() => {
-        const openTickets = tickets.filter((ticket) => ticket.userId === user._id && ticket.status === 'Closed');
-        setOpenTicketsCount(openTickets.length);
+        if (user.role === 'User') {
+            const openTickets = tickets.filter((ticket) => ticket.userId === user._id && ticket.status === 'Closed');
+            setOpenTicketsCount(openTickets.length);
+        }
     }, [tickets, user._id]);
 
     return (

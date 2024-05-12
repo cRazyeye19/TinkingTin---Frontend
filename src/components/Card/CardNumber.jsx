@@ -10,9 +10,11 @@ const CardNumber = () => {
     const [openTicketsCount, setOpenTicketsCount] = useState(0);
 
     useEffect(() => {
-        const openTickets = tickets.filter((ticket) => ticket.userId === user._id);
-        setOpenTicketsCount(openTickets.length);
-    }, [tickets, user._id]);
+        if (user.role === 'User') {
+            const openTickets = tickets.filter((ticket) => ticket.userId === user._id);
+            setOpenTicketsCount(openTickets.length);
+        }
+    }, [tickets, user._id, user.role]);
 
     return (
         <div className="col-xxl-4 col-md-6">
