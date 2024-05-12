@@ -37,7 +37,7 @@ const ProfileCard = () => {
               Profile <span>| User</span>
             </h5>
             {user._id === profileUserId ? (
-              <i className="bi bi-pencil edit_icon" title='Edit Profile' onClick={() => setEditProfile(true)}></i>
+              <i className="bi bi-feather edit_icon" title='Edit Profile' onClick={() => setEditProfile(true)}></i>
             ) : null}
           </div>
           <div className='d-flex align-items-center justify-content-center'>
