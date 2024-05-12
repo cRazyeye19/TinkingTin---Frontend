@@ -2,6 +2,8 @@ import React from 'react'
 import Header from '../../components/Header/Header'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import MainFac from '../../components/Main/Main-Fac'
+import MainFooter from '../../components/Footer/MainFooter'
+import Scroll from '../../components/Scroll/Scroll'
 
 const Faculty = () => {
     return (
@@ -9,6 +11,8 @@ const Faculty = () => {
             <Header />
             <MainFac />
             <Sidebar />
+            <MainFooter />
+            <Scroll />
         </>
     )
 }

@@ -224,7 +224,7 @@ function EditModal({ ticketId, showModal, setShowModal }) {
 
               <label className='form-label d-flex edit_label'>Reporter</label>
               <div className='d-flex align-items-center'>
-                <span className='text-bg-info edit_status'>{ticket.userfirstname} {ticket.userlastname}</span>
+                <span className='bg-color edit_status'>{ticket.userfirstname} {ticket.userlastname}</span>
               </div>
 
               <div className='mt-4' />

@@ -6,6 +6,10 @@
     transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
 }
 
+.bg-color{
+    background-color: #F8F9FA;
+}
+
 .slide-range {
     width: 100%;
     border-radius: 5px;
