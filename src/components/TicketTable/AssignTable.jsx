@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import './ticketTable.css'
 import NotFound from '../NotFound/NotFound'
 import DeptEdit from '../Edit Ticket/DeptEdit'
 import Button from 'react-bootstrap/Button'
@@ -17,6 +16,7 @@ const AssignTable = ({ users }) => {
   const [selectedUser, setSelectedUser] = useState(null)
 
   const handleEditModal = (user) => {
+    console.log(user)
     setSelectedUser(user._id)
     setShowEditModal(true)
   }
@@ -87,7 +87,7 @@ const AssignTable = ({ users }) => {
                   <span title={user.role} className='data'>{user.role}</span>
                 </td>
                 <td>
-                  <Button className='btn-size' variant='outline-primary' size='sm' onClick={() => handleEditModal(user)}>Edit Access</Button>
+                  <Button className='assign-btn' variant='outline-primary' size='sm' onClick={() => handleEditModal(user)}>Edit Access</Button>
                 </td>
               </tr>
             ))

@@ -13,14 +13,15 @@ const DeptEdit = ({ userId, showEditModal, setShowEditModal }) => {
 
   const { users } = useSelector(state => state.userReducer);
   const user = users.find(user => user._id === userId)
-  console.log(user)
 
   const [userRole, setUserRole] = useState(user?.role || "");
+  const [userDepartment, setUserDepartment] = useState(user?.department || "");
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (user) {
       setUserRole(user.role);
+      setUserDepartment(user.department);
     }
   }, [user]);
 
@@ -29,19 +30,28 @@ const DeptEdit = ({ userId, showEditModal, setShowEditModal }) => {
     { value: "Faculty", label: "Faculty" },
   ]
 
+  const deptlist = [
+    { label: 'IT', value: 'IT (Information Technology)' },
+    { label: 'Library', value: 'Library' },
+    { label: 'Accounting', value: 'Finance' },
+    { label: 'Maintenance', value: 'Maintenance' },
+    { label: 'Security', value: 'Security' },
+  ]
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let updatedUser = {
-      role: userRole?.value
+      role: userRole?.value,
+      department: userDepartment?.value
     }
     console.log(updatedUser)
-    dispatch(updateAssignee(user._id, updatedUser));
+    dispatch(updateAssignee(userId, updatedUser));
     setShowEditModal(false);
   }
 
   return (
     <>
-      <Modal show={showEditModal} onHide={() => setShowEditModal(false)}>
+      <Modal show={showEditModal} onHide={() => setShowEditModal(false)} className='d-flex justify-content-center align-items-center'>
         <ModalHeader closeButton>
           <ModalTitle>
             <span className='title'>User <span className='title-2'>Details</span></span>
@@ -79,6 +89,22 @@ const DeptEdit = ({ userId, showEditModal, setShowEditModal }) => {
                 required
               />
             </div>
+            <div className='mt-3' />
+
+            <label className='form-label d-flex input_label'>Department</label>
+            <Select
+              className='basic-single edit_label'
+              classNamePrefix='select'
+              name='department'
+              options={deptlist}
+              value={userDepartment}
+              placeholder={userDepartment}
+              onChange={(selectedDept) => {
+                console.log(selectedDept)
+                setUserDepartment(selectedDept);
+              }}
+              required
+            />
           </div>
           <div className='row'>
             <div className='d-flex justify-content-end align-items-center mt-4'>

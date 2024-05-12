@@ -71,7 +71,7 @@ const Sidebar = () => {
                     </a>
                 </li>
 
-                {user.role === "Admin" && (
+                {(user.role === "Admin" || user.role === "Department") && (
                     <li className='nav-item'>
                         <a className="nav-link">
                             <i className='bi bi-file-earmark-person'></i>
@@ -79,6 +79,7 @@ const Sidebar = () => {
                         </a>
                     </li>
                 )}
+
                 <li className='nav-item' onClick={handleLogOut}>
                     <a className="nav-link">
                         <i className="bi bi-box-arrow-right"></i>

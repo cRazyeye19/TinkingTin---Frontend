@@ -6,7 +6,7 @@
     transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
 }
 
-.bg-color{
+.bg-color {
     background-color: #F8F9FA;
 }
 
@@ -53,7 +53,7 @@
     font-size: 13px;
 }
 
-.error-label{
+.error-label {
     font-size: x-small;
     font-weight: 600;
 }
