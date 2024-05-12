@@ -28,7 +28,7 @@ const getPriorityColor = (priority) => {
 const TicketTable = ({ tickets }) => {
 
   const [currentPage, setCurrentPage] = useState(1);
-  const recordsPerPage = 5;
+  const recordsPerPage = 10;
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
   const records = tickets.slice(firstIndex, lastIndex);
@@ -63,7 +63,7 @@ const TicketTable = ({ tickets }) => {
           </form>
         </div>
       </div>
-      <table className='table table-borderless datatable'>
+      <table className='table table-borderless'>
         <thead className='table-light'>
           <tr>
             <th scope='col'>Ticket #</th>

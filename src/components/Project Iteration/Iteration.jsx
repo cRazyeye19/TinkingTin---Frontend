@@ -1,23 +1,66 @@
-import React from 'react'
-import './iteration.css'
-import CardFilter from '../CardFilter/CardFilter'
-import Version from '../VersionItem/Version'
-import ProfileCard from '../ProfileCard/ProfileCard'
+import React from 'react';
+import Chart from 'react-apexcharts';
+import { useSelector } from 'react-redux';
 
 const Iteration = () => {
+  const { user } = useSelector((state) => state.authReducer.authData);
+  let { tickets } = useSelector((state) => state.ticketReducer);
+
+  if (user.role === 'User') {
+    tickets = tickets.filter((ticket) => ticket.userId === user._id);
+  }
+
+  const issueCounts = {
+    Bug: 0,
+    Maintenance: 0,
+    Finance: 0,
+    Missing: 0
+  };
+
+  tickets.forEach((ticket) => {
+    if (ticket.issue === 'Bug') {
+      issueCounts.Bug += 1;
+    } else if (ticket.issue === 'Maintenance') {
+      issueCounts.Maintenance += 1;
+    } else if (ticket.issue === 'Finance') {
+      issueCounts.Finance += 1;
+    } else if (ticket.issue === 'Missing') {
+      issueCounts.Missing += 1;
+    }
+  });
+
+  const chartData = {
+    series: [issueCounts.Bug, issueCounts.Maintenance, issueCounts.Finance, issueCounts.Missing],
+    options: {
+      chart: {
+        type: 'pie',
+      },
+      plotOptions: {
+        pie: {
+          customScale: 1,
+        },
+      },
+      dataLabels: {
+        style: {
+          fontSize: '10px',
+        }
+      },
+      labels: ['Bug', 'Maintenance', 'Finance', 'Missing'],
+    },
+  };
+
   return (
     <div className="card">
-        <CardFilter />
-        <div className="card-body">
-            <h5 className="card-title title_design">
-                Project <span>| Version</span>
-            </h5>
-            <div className="activity">
-                <Version />
-            </div>
-        </div>
+      <div className="filter">
+      </div>
+      <div className="card-body">
+        <h6 className="card-title">
+          Issues <span>/ Tickets</span>
+        </h6>
+        <Chart options={chartData.options} series={chartData.series} type="pie" height={350} />
+      </div>
     </div>
-  )
+  );
 }
 
 export default Iteration

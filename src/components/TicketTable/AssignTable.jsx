@@ -38,7 +38,7 @@ const AssignTable = ({ users }) => {
           </div>
         </div>
       </div>
-      <table className='table table-borderless datatable'>
+      <table className='table table-borderless'>
         <thead className='table-light'>
           <tr>
             <th scope='col'>User ID</th>

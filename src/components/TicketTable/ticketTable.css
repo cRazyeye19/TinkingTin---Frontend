@@ -1,35 +1,88 @@
-.edit,
-.delete {
-    cursor: pointer;
-}
-
-.edit-disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-}
-
 th,
 td {
     text-align: center;
-    font-size: 14px;
+    font-size: 1em;
 }
 
 .data {
     font-weight: 500;
     line-height: normal;
+    font-size: 1em;
 }
 
 .data-title {
     font-weight: 500;
     color: #4154f1;
+    font-size: 1em;
+}
+
+.edit, .delete {
+    cursor: pointer;
 }
 
 .page-link {
     color: #3D3F42;
     cursor: pointer;
+    font-size: 0.8em;
 }
 
 .btn-size {
     padding: 0.25rem 0.5rem;
-    font-size: 0.75rem;
+    font-size: 0.75em;
+}
+
+@media (max-width: 768px) {
+
+    th,
+    td {
+        font-size: 0.9em;
+    }
+
+    .data,
+    .data-title {
+        font-size: 0.9em;
+    }
+
+    .page-link {
+        font-size: 0.6em;
+    }
+
+    .btn-size {
+        font-size: 0.55em;
+    }
+}
+
+@media (max-width: 576px) {
+
+    th,
+    td {
+        font-size: 0.85em;
+    }
+
+    .data,
+    .data-title {
+        font-size: 0.85em;
+    }
+
+    .page-link {
+        font-size: 0.5em;
+    }
+
+    .btn-size {
+        font-size: 0.45em;
+    }
+}
+
+@media (max-width: 473px) {
+    th:nth-child(3),
+    td:nth-child(3) {
+        display: none;
+    }
+}
+
+@media (max-width: 417px) {
+    th:nth-child(4),
+    td:nth-child(4) {
+        display: none;
+    }
 }

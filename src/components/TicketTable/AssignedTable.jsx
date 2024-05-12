@@ -54,7 +54,7 @@ const AssignedTable = ({ filteredTickets }) => {
                     </form>
                 </div>
             </div>
-            <table className='table table-borderless datatable'>
+            <table className='table table-borderless'>
                 <thead className='table-light'>
                     <tr>
                         <th scope='col'>Ticket #</th>

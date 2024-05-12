@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './card.css'
 import { useSelector } from 'react-redux';
-import CardFilter from '../CardFilter/CardFilter';
 
 const CardClosed = () => {
 
@@ -18,14 +17,13 @@ const CardClosed = () => {
     return (
         <div className="col-xxl-4 col-md-6">
             <div className="card info-card sales-card">
-                <CardFilter />
                 <div className="card-body">
-                    <h5 className="card-title">
-                        <span>User || Closed</span>
+                    <h5 className='card-title'>
+                        Closed <span>/Tickets</span>
                     </h5>
                     <div className="d-flex align-items-center">
                         <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                            <i className='bi bi-people-fill'></i>
+                            <i className='bi bi-file-earmark-excel-fill text-danger'></i>
                         </div>
                         <div className="ps-3">
                             <h6>Tickets</h6>

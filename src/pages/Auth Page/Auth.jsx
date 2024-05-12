@@ -45,7 +45,17 @@ const Auth = () => {
     const buttonClicked = e.nativeEvent.submitter;
     const buttonType = buttonClicked.getAttribute('type');
 
-    if (isEmpty && buttonType === 'submit') {
+    if (!isSignUp) {
+      const { username, password } = data;
+      const isBlank = username === '' || password === '';
+      if (isBlank && buttonType === 'submit') {
+        setShowToast(true);
+        setTimeout(() => {
+          setShowToast(false);
+        }, 2000);
+        return
+      }
+    } else if (isEmpty && buttonType === 'submit') {
       setShowToast(true);
       setTimeout(() => {
         setShowToast(false);
@@ -65,7 +75,7 @@ const Auth = () => {
 
     if (isSignUp) {
       data.password !== data.confirmPassword && buttonType === 'submit' ? setConfirmPass(true) : dispatch(signUp(data));
-    } else {
+    } else if (!isSignUp && buttonType === 'submit') {
       dispatch(logIn(data));
     }
   }
