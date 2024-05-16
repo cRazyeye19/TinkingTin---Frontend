@@ -75,11 +75,11 @@ const Notification = ({ socket }) => {
                                 <i className="bi bi-exclamation-circle text-warning"></i>
                                 <div>
                                     <h4>
+                                        {notif.senderName}
                                         <i
                                             className='bi bi-trash text-danger'
                                             onClick={() => handleDelete(notif._id)}
                                         />
-                                        {notif.senderName}
                                     </h4>
                                     <p>{notif.notification}</p>
                                     <p>{format(notif.createdAt)}</p>
