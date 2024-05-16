@@ -29,3 +29,13 @@ export const deleteNotif = (id) => async (dispatch) => {
         dispatch({ type: "DELETE_NOTIF_FAILURE", error: error.message });
     }
 }
+
+export const deleteAllNotifs = () => async (dispatch) => {
+    dispatch({ type: "DELETE_ALL_NOTIFS_START" })
+    try {
+        await NotifApi.deleteAllNotifs();
+        dispatch({ type: "DELETE_ALL_NOTIFS_SUCCESS" });
+    } catch (error) {
+        dispatch({ type: "DELETE_ALL_NOTIFS_FAILURE", error: error.message });
+    }
+}
