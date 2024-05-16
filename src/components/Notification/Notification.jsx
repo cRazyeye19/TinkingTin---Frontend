@@ -74,13 +74,16 @@ const Notification = ({ socket }) => {
                             <li className="notification-item">
                                 <i className="bi bi-exclamation-circle text-warning"></i>
                                 <div>
-                                    <h4>{notif.senderName}</h4>
+                                    <h4>
+                                        <i
+                                            className='bi bi-trash text-danger'
+                                            onClick={() => handleDelete(notif._id)}
+                                        />
+                                        {notif.senderName}
+                                    </h4>
                                     <p>{notif.notification}</p>
                                     <p>{format(notif.createdAt)}</p>
                                 </div>
-                                <button onClick={() => handleDelete(notif._id)} className="btn btn-sm btn-danger">
-                                    Delete
-                                </button>
                             </li>
                             <li>
                                 <hr className="dropdown-divider" />
