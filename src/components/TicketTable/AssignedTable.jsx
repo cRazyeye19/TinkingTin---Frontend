@@ -27,7 +27,7 @@ const stripHtmlTags = (htmlString) => {
     return htmlString.replace(/(<([^>]+)>)/gi, '');
 };
 
-const AssignedTable = ({ filteredTickets }) => {
+const AssignedTable = ({ filteredTickets, socket }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const recordsPerPage = 10;
     const lastIndex = currentPage * recordsPerPage;
@@ -124,7 +124,7 @@ const AssignedTable = ({ filteredTickets }) => {
                     </li>
                 </ul>
             </nav>
-            {selectedTicket && showEdit && <FactEdit ticketId={selectedTicket} showEdit={showEdit} setShowEdit={setShowEdit} />}
+            {selectedTicket && showEdit && <FactEdit ticketId={selectedTicket} showEdit={showEdit} socket={socket} setShowEdit={setShowEdit} />}
         </>
     )
     function changeCurrPage(id) {

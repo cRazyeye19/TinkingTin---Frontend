@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import AssignedTable from '../TicketTable/AssignedTable';
 import LoadSpinners from '../LoadSpinners/LoadSpinners';
 
-const TaskReport = () => {
+const TaskReport = ({ socket }) => {
 
   const { user } = useSelector((state) => state.authReducer.authData)
   let { tickets, loading } = useSelector((state) => state.ticketReducer);
@@ -18,7 +18,7 @@ const TaskReport = () => {
         {loading ? (
           <LoadSpinners />
         ) : (
-          <AssignedTable filteredTickets={filteredTickets} />
+          <AssignedTable filteredTickets={filteredTickets} socket={socket} />
         )}
       </div>
     </div>

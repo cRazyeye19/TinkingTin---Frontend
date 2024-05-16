@@ -15,9 +15,9 @@ const DashboardDept = () => {
                         <CardNumber />
                         <CardOpened />
                         <CardClosed />
-                        {/* <div className="col-12">
-                    <Reports />
-                </div> */}
+                        <div className="col-12">
+
+                        </div>
                         <div className="col-12">
                             <AssignReport />
                         </div>

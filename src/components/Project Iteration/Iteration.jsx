@@ -8,6 +8,8 @@ const Iteration = () => {
 
   if (user.role === 'User') {
     tickets = tickets.filter((ticket) => ticket.userId === user._id);
+  } else if (user.role === 'Department') {
+    tickets = tickets.filter((ticket) => ticket.department === user.department);
   }
 
   const issueCounts = {

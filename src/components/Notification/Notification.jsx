@@ -1,6 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-const Notification = () => {
+const Notification = ({ socket }) => {
+
+    const [notifications, setNotifications] = useState([])
+
+    useEffect(() => {
+        socket?.on('getNotification', data => {
+            setNotifications((prev) => [...prev, data])
+        })
+    }, [socket])
     return (
         <li className='nav-item dropdown'>
             <a className='nav-link nav-icon' href="#" data-bs-toggle="dropdown">

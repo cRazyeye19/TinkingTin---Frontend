@@ -15,6 +15,7 @@ import AssignWrapper from './pages/Dept Page/AssignWrapper';
 import Faculty from './pages/Faculty Page/Faculty';
 import Forgot from './pages/Password/Forgot';
 import Reset from './pages/Password/Reset';
+import Chat from './pages/Chat Page/Chat';
 
 
 function App() {
@@ -30,7 +31,8 @@ function App() {
         <Route path="/dashboard/department" element={user ? <Dept /> : <Navigate to="../auth" />} />
         <Route path='/dashboard/faculty' element={user ? <Faculty /> : <Navigate to="../auth" />} />
         <Route path="/dashboard/admin" element={user ? <Admin /> : <Navigate to="../auth" />} />
-        <Route path="/manage/assign" element={user ? <AssignWrapper/> : <Navigate to="../auth" />} />
+        <Route path="/manage/assign" element={user ? <AssignWrapper /> : <Navigate to="../auth" />} />
+        <Route path="/message" element={user ? <Chat /> : <Navigate to="*" />} />
         <Route path='*' element={<Error404 />} />
       </Routes>
     </>

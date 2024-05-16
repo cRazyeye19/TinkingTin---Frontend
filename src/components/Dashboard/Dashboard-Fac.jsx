@@ -3,10 +3,11 @@ import CardNumber from '../Card/CardNumber'
 import CardOpened from '../Card/CardOpened'
 import CardClosed from '../Card/CardClosed'
 import ProfileCard from '../ProfileCard/ProfileCard'
-import Iteration from '../Project Iteration/Iteration'
 import TaskReport from '../TicketReport/TaskReport'
+import StatusChart from '../Reports/Faculty/StatusChart'
+import PrioChart from '../Reports/Faculty/PrioChart'
 
-const DashboardFac = () => {
+const DashboardFac = ({ socket }) => {
     return (
         <section className='dashboard section'>
             <div className="row">
@@ -15,17 +16,17 @@ const DashboardFac = () => {
                         <CardNumber />
                         <CardOpened />
                         <CardClosed />
-                        {/* <div className="col-12">
-                    <Reports />
-                </div> */}
                         <div className="col-12">
-                            <TaskReport />
+                            <StatusChart />
+                        </div>
+                        <div className="col-12">
+                            <TaskReport socket={socket}/>
                         </div>
                     </div>
                 </div>
                 <div className="col-lg-4">
+                    <PrioChart />
                     <ProfileCard />
-                    <Iteration />
                 </div>
             </div>
         </section>

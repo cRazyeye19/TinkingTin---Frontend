@@ -1,0 +1,31 @@
+import * as NotifApi from '../api/NotifRequest';
+
+export const createNotif = (newNotification) => async (dispatch) => {
+    dispatch({ type: "CREATE_NOTIF_START" })
+    try {
+        const { data } = await NotifApi.createNotif(newNotification);
+        dispatch({ type: "CREATE_NOTIF_SUCCESS", data: data });
+    } catch (error) {
+        dispatch({ type: "CREATE_NOTIF_FAILURE", error: error.message });
+    }
+}
+
+export const getNotifs = () => async (dispatch) => {
+    dispatch({ type: "GET_NOTIFS_START" })
+    try {
+        const { data } = await NotifApi.getNotifs();
+        dispatch({ type: "GET_NOTIFS_SUCCESS", data: data });
+    } catch (error) {
+        dispatch({ type: "GET_NOTIFS_FAILURE", error: error.message });
+    }
+}
+
+export const deleteNotif = (id) => async (dispatch) => {
+    dispatch({ type: "DELETE_NOTIF_START" })
+    try {
+        await NotifApi.deleteNotif(id);
+        dispatch({ type: "DELETE_NOTIF_SUCCESS", data: id });
+    } catch (error) {
+        dispatch({ type: "DELETE_NOTIF_FAILURE", error: error.message });
+    }
+}

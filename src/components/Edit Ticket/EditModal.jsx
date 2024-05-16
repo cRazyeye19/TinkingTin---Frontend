@@ -14,8 +14,9 @@ import { updateTicket } from '../../actions/TicketAction'
 import { createComment } from '../../actions/CommentAction'
 import Comments from '../Comments/Comments'
 import { getAllUsers } from '../../actions/UserAction'
+import { createNotif } from '../../actions/NotifAction'
 
-function EditModal({ ticketId, showModal, setShowModal }) {
+function EditModal({ ticketId, showModal, setShowModal, socket }) {
 
   let { tickets } = useSelector((state) => state.ticketReducer)
   const ticket = tickets.find((ticket) => ticket._id === ticketId);
@@ -109,6 +110,52 @@ function EditModal({ ticketId, showModal, setShowModal }) {
     reset();
   }
 
+  const handleCommentNotif = (e) => {
+    e.preventDefault();
+    const newNotification = {
+      senderName: user.username,
+      receiverFirstName: ticket.userfirstname,
+      receiverLastName: ticket.userlastname,
+      context: ticket._id,
+      notification: `${user.username} commented on your ticket ${ticket._id}`,
+    }
+    console.log(newNotification);
+    dispatch(createNotif(newNotification));
+  }
+
+  const handleSaveNotif = (e) => {
+    e.preventDefault();
+    const newNotification = {
+      senderName: user.username,
+      receiverFirstName: ticket.userfirstname,
+      receiverLastName: ticket.userlastname,
+      context: ticket._id,
+      notification: `${user.username} updated your ticket ${ticket._id}`,
+    }
+    console.log(newNotification);
+    dispatch(createNotif(newNotification));
+  }
+
+  const handleNotification = (type) => {
+    socket?.emit('sendNotification', {
+      senderName: user.username,
+      receiverName: ticket.userfirstname,
+      type,
+    })
+  }
+
+  const handleSaveChanges = (e) => {
+    handleNotification(1);
+    handleSubmit(e);
+    handleSaveNotif(e);
+  }
+
+  const handleComment = (e) => {
+    handleNotification(2);
+    handleCommentSubmit(e);
+    handleCommentNotif(e);
+  }
+
   const truncateTicketId = (id, length) => {
     if (id.length <= length) return id;
     return id.substring(0, length);
@@ -150,7 +197,7 @@ function EditModal({ ticketId, showModal, setShowModal }) {
                   setTicketIssue(selectedIssue);
                 }}
                 required
-                isDisabled={userRole === 'Admin' || userRole === 'User' ? false : true}
+                isDisabled={(userRole === 'User' && ticket.status === 'In Progress') ? true : false}
               />
 
               <hr />
@@ -160,7 +207,7 @@ function EditModal({ ticketId, showModal, setShowModal }) {
                 theme='snow'
                 value={description}
                 onChange={(value) => setDescription(value)}
-                readOnly={userRole === 'Admin' || userRole === 'User' ? false : true}
+                readOnly={(userRole === 'User' && ticket.status === 'In Progress') ? true : false}
               >
               </ReactQuill>
 
@@ -179,7 +226,7 @@ function EditModal({ ticketId, showModal, setShowModal }) {
                 >
                 </textarea>
                 <div className='d-flex my-2'>
-                  <button className='btn btn-primary btn-sm' onClick={handleCommentSubmit}>Post Comment</button>
+                  <button className='btn btn-primary btn-sm' onClick={handleComment}>Post Comment</button>
                 </div>
 
                 <Comments ticketId={ticketId} />
@@ -199,7 +246,7 @@ function EditModal({ ticketId, showModal, setShowModal }) {
                   setTicketStatus(selectedStatus);
                 }}
                 required
-                isDisabled={userRole === 'Admin' || userRole === 'Faculty' ? false : true}
+                isDisabled={(userRole === 'User' && ticket.status === 'In Progress') ? true : false}
               />
 
               <div className='mt-4' />
@@ -240,7 +287,7 @@ function EditModal({ ticketId, showModal, setShowModal }) {
                   setTicketPrio(selectedPriority);
                 }}
                 required
-                isDisabled={userRole === 'Admin' || userRole === 'User' || userRole === 'Department' ? false : true}
+                isDisabled={(userRole === 'User' && ticket.status === 'In Progress') ? true : false}
               />
 
               <div className='mt-4' />
@@ -261,7 +308,7 @@ function EditModal({ ticketId, showModal, setShowModal }) {
                 <span className='date_span'>{totalTime}h in total</span>
               </div>
 
-              <div className='mt-3' />
+              <div className='mt-4' />
 
               <div className="row">
                 <div className="col">
@@ -310,7 +357,7 @@ function EditModal({ ticketId, showModal, setShowModal }) {
           <div className='row'>
             <div className='d-flex justify-content-end align-items-center mt-4'>
               <Link to="/dashboard/user">
-                <button className='btn btn-sm rounded-3 btn-primary' onClick={handleSubmit}>Save Changes</button>
+                <button className='btn btn-sm rounded-3 btn-primary' onClick={handleSaveChanges}>Save Changes</button>
                 <button className='btn btn-sm rounded-3 btn-secondary ms-2' onClick={() => setShowModal(false)}>Cancel</button>
               </Link>
             </div>

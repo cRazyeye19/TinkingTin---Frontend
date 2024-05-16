@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './topbar.css'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'

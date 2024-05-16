@@ -11,6 +11,8 @@ const PrioReports = () => {
   // the ones associated with the user
   if (user.role === 'User') {
     tickets = tickets.filter((ticket) => ticket.userId === user._id);
+  } else if (user.role === 'Department') {
+    tickets = tickets.filter((ticket) => ticket.department === user.department);
   }
 
   // Initialize an object to store the number of tickets by date and priority

@@ -14,7 +14,7 @@ import { updateTicket } from '../../actions/TicketAction'
 import { createComment } from '../../actions/CommentAction'
 import Comments from '../Comments/Comments'
 
-function FactEdit({ ticketId, showEdit, setShowEdit }) {
+function FactEdit({ ticketId, showEdit, setShowEdit, socket }) {
 
   const { user } = useSelector((state) => state.authReducer.authData);
   const userRole = user.role;
@@ -102,6 +102,25 @@ function FactEdit({ ticketId, showEdit, setShowEdit }) {
     reset();
   }
 
+  const handleNotification = (type) => {
+    socket.emit('sendNotification', {
+      senderName: user.username,
+      receiverFirstname: ticket.userfirstname,
+      receiverLastname: ticket.userlastname,
+      type,
+    })
+  }
+
+  const handleSaveChanges = (e) => {
+    handleNotification(1);
+    handleSubmit(e);
+  }
+
+  const handleComment = (e) => {
+    handleNotification(2);
+    handleCommentSubmit(e);
+  }
+
   const truncateTicketId = (id, length) => {
     if (id.length <= length) return id;
     return id.substring(0, length);
@@ -121,7 +140,7 @@ function FactEdit({ ticketId, showEdit, setShowEdit }) {
 
   return (
     <>
-      <Modal show={showEdit} onHide={() => setShowEdit(false)} size='lg'>
+      <Modal show={showEdit} onHide={() => setShowEdit(false)} size='xl'>
         <ModalHeader closeButton>
           <ModalTitle>
             <span className='title'>Ticket <span className='title-2'>Details</span></span>
@@ -129,7 +148,7 @@ function FactEdit({ ticketId, showEdit, setShowEdit }) {
         </ModalHeader>
         <ModalBody>
           <div className='row'>
-            <div className='col-md-7'>
+            <div className='col-md-8'>
               <label className='form-label d-flex edit_label'>Issue</label>
               <Select
                 className="basic-single edit_label"
@@ -172,13 +191,13 @@ function FactEdit({ ticketId, showEdit, setShowEdit }) {
                 >
                 </textarea>
                 <div className='d-flex mt-2'>
-                  <button className='btn btn-primary btn-sm' onClick={handleCommentSubmit}>Post Comment</button>
+                  <button className='btn btn-primary btn-sm' onClick={handleComment}>Post Comment</button>
                 </div>
 
                 <Comments ticketId={ticketId} />
               </>
             </div>
-            <div className='col-md-5'>
+            <div className='col-md-4'>
               <label className='form-label d-flex edit_label'>Status</label>
               <Select
                 className="basic-single edit_label"
@@ -295,7 +314,7 @@ function FactEdit({ ticketId, showEdit, setShowEdit }) {
           <div className='row'>
             <div className='d-flex justify-content-end align-items-center mt-4'>
               <Link to="/dashboard/user">
-                <button className='btn btn-sm rounded-3 btn-primary' onClick={handleSubmit}>Save Changes</button>
+                <button className='btn btn-sm rounded-3 btn-primary' onClick={handleSaveChanges}>Save Changes</button>
               </Link>
             </div>
           </div>

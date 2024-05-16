@@ -120,6 +120,7 @@ function ProfileEdit({ editProfile, setEditProfile, data }) {
                                     className='form-control edit_field'
                                     name='role'
                                     onChange={handleChange} value={formData.role}
+                                    disabled={user.role !== "Department"}
                                 />
                             </>
                         )}

@@ -3,11 +3,11 @@ import './header.css'
 import Logo from '../Logo/Logo'
 import Navigation from '../Navigation/Navigation'
 
-const Header = () => {
+const Header = ({ socket }) => {
   return (
     <header id='header' className='header fixed-top d-flex align-items-center'>
       <Logo />
-      <Navigation />
+      <Navigation socket={socket} />
     </header>
   )
 }

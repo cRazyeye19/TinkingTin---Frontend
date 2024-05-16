@@ -22,7 +22,7 @@ const Comment = ({ comment }) => {
     e.preventDefault();
     const newReply = {
       commentId: comment._id,
-      username: comment.username,
+      username: user.username,
       reply: reply
     }
     dispatch(addReply(comment._id, newReply))

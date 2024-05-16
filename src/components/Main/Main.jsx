@@ -3,11 +3,11 @@ import './main.css'
 import PageTitle from '../PageTitle/PageTitle'
 import Dashboard from '../Dashboard/Dashboard'
 
-const Main = () => {
+const Main = ({ socket }) => {
     return (
         <main id='main' className='main'>
             <PageTitle />
-            <Dashboard />
+            <Dashboard socket={socket}/>
         </main>
     )
 }
