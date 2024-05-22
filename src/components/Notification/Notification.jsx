@@ -20,6 +20,7 @@ const Notification = ({ socket }) => {
     }, [dispatch]);
 
     const { notifs } = useSelector((state) => state.notifReducer);
+    console.log(notifs);
 
     const handleDeleteAll = () => {
         try {
@@ -37,18 +38,22 @@ const Notification = ({ socket }) => {
         }
     };
 
+    const filteredNotifs = notifs.filter(
+        notif => notif.receiverFirstName === user.firstname && notif.receiverLastName === user.lastname
+    );
+
     return (
         <li className="nav-item dropdown">
             <a className="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                 <i className="bi bi-bell"></i>
-                {notifs?.length > 0 && (
-                    <span className="badge bg-primary badge-number">{notifs.length}</span>
+                {filteredNotifs?.length > 0 && (
+                    <span className="badge bg-primary badge-number">{filteredNotifs.length}</span>
                 )}
             </a>
 
             <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                 <li className="dropdown-header">
-                    You have {notifs?.length > 0 ? notifs.length : "no"} new notifications
+                    You have {filteredNotifs?.length > 0 ? filteredNotifs.length : "no"} new notifications
                     {notifs?.length > 0 && (
                         <a href="#">
                             <span className="badge round-pill bg-primary p-2 ms-2" onClick={handleDeleteAll}>
@@ -69,18 +74,20 @@ const Notification = ({ socket }) => {
                         </div>
                     </li>
                 ) : (
-                    notifs.map((notif) => (
+                    filteredNotifs.map((notif) => (
                         <React.Fragment key={notif._id}>
                             <li className="notification-item">
                                 <i className="bi bi-exclamation-circle text-warning"></i>
                                 <div>
-                                    <h4>
-                                        {notif.senderName}
-                                        <i
-                                            className='bi bi-trash text-danger'
-                                            onClick={() => handleDelete(notif._id)}
-                                        />
-                                    </h4>
+                                    <h6>
+                                        <div className='d-flex justify-content-between align-items-baseline'>
+                                            {notif.senderName}
+                                            <i
+                                                className='bi bi-trash text-danger fs-6 pointer'
+                                                onClick={() => handleDelete(notif._id)}
+                                            />
+                                        </div>
+                                    </h6>
                                     <p>{notif.notification}</p>
                                     <p>{format(notif.createdAt)}</p>
                                 </div>

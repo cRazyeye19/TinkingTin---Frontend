@@ -89,7 +89,12 @@ const TicketTable = ({ tickets }) => {
         <tbody>
           {records
             .filter((ticket) => {
-              return searchText.toLowerCase() === '' ? ticket : ticket.issue.toLowerCase().includes(searchText);
+              return searchText.toLowerCase() === '' ?
+                ticket : ticket.issue.toLowerCase().includes(searchText) ||
+                ticket._id.toLowerCase().includes(searchText) ||
+                ticket.description.toLowerCase().includes(searchText) ||
+                ticket.status.toLowerCase().includes(searchText) ||
+                ticket.priority.toLowerCase().includes(searchText);
             })
             .length === 0 ? (
             <tr>
@@ -100,7 +105,12 @@ const TicketTable = ({ tickets }) => {
           ) : (
             records
               .filter((ticket) => {
-                return searchText.toLowerCase() === '' ? ticket : ticket.issue.toLowerCase().includes(searchText);
+                return searchText.toLowerCase() === '' ?
+                  ticket : ticket.issue.toLowerCase().includes(searchText) ||
+                  ticket._id.toLowerCase().includes(searchText) ||
+                  ticket.description.toLowerCase().includes(searchText) ||
+                  ticket.status.toLowerCase().includes(searchText) ||
+                  ticket.priority.toLowerCase().includes(searchText);
               })
               .map((ticket) => (
                 <tr key={ticket._id}>

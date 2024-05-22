@@ -2,7 +2,11 @@ import React from 'react'
 import { Col, Container, Row, Card } from 'react-bootstrap'
 import courier from '../../imgs/courier.png'
 import './team.css'
-import profile from '../../imgs/pexels-pixabay-415829.jpg'
+import Madam from '../../imgs/Madam.jpg';
+import Kurt from '../../imgs/Kurt.jpg';
+import Skibidi from '../../imgs/Skibidi.jpg';
+import Vanessa from '../../imgs/Vanessa.png';
+import Pansoy from '../../imgs/Pansoy.jpg';
 
 const Team = () => {
     return (
@@ -15,7 +19,7 @@ const Team = () => {
                     </div>
                     <Col md={4}>
                         <Card className='card'>
-                            <Card.Img variant="top" src={profile} className='profile' img-fluid />
+                            <Card.Img variant="top" src={Kurt} className='profile' img-fluid />
                             <Card.Body>
                                 <Card.Title>Kurt Macasling <span className='role'>UI/UX Designer</span></Card.Title>
                                 <Card.Text>
@@ -26,7 +30,7 @@ const Team = () => {
                     </Col>
                     <Col md={4}>
                         <Card className='card'>
-                            <Card.Img variant="top" src={profile} className='profile' img-fluid />
+                            <Card.Img variant="top" src={Vanessa} className='profile' img-fluid />
                             <Card.Body>
                                 <Card.Title>Vanessa Cosep <span className='role'>Frontend Developer</span></Card.Title>
                                 <Card.Text>
@@ -37,7 +41,7 @@ const Team = () => {
                     </Col>
                     <Col md={4}>
                         <Card className='card'>
-                            <Card.Img variant="top" src={profile} className='profile' img-fluid />
+                            <Card.Img variant="top" src={Madam} className='profile' img-fluid />
                             <Card.Body>
                                 <Card.Title>Aubrey Pagdalian <span className='role'>Frontend Developer</span></Card.Title>
                                 <Card.Text>
@@ -51,7 +55,7 @@ const Team = () => {
                     <div className='cardform'>
                         <Col md={4}>
                             <Card className='card'>
-                                <Card.Img variant="top" src={profile} className='profile' img-fluid />
+                                <Card.Img variant="top" src={Pansoy} className='profile' img-fluid />
                                 <Card.Body>
                                     <Card.Title>John Lester Pansoy <span className='role'>FullStack Developer</span></Card.Title>
                                     <Card.Text>
@@ -62,7 +66,7 @@ const Team = () => {
                         </Col>
                         <Col md={4}>
                             <Card className='card'>
-                                <Card.Img variant="top" src={profile} className='profile' img-fluid />
+                                <Card.Img variant="top" src={Skibidi} className='profile' img-fluid />
                                 <Card.Body>
                                     <Card.Title>Jam Cotejo <span className='role'>Backend Developer</span></Card.Title>
                                     <Card.Text>

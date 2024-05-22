@@ -63,14 +63,7 @@ const Sidebar = () => {
                         </a>
                     </li>
                 )}
-
-                <li className='nav-item'>
-                    <a className="nav-link">
-                        <i className='bi bi-chat-dots'></i>
-                        <Link to='/message'>Message</Link>
-                    </a>
-                </li>
-
+                
                 {(user.role === "Admin" || user.role === "Department") && (
                     <li className='nav-item'>
                         <a className="nav-link">

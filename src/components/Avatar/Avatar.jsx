@@ -36,36 +36,6 @@ const Avatar = () => {
                         <hr className='dropdown-divider' />
                     </li>
 
-                    {/* <li>
-                        <a href="users-profile.html" className="dropdown-item d-flex align-items-center ">
-                            <i className='bi bi-person'></i>
-                            <span>My Profile</span>
-                        </a>
-                    </li>
-                    <li>
-                        <hr className='dropdown-divider' />
-                    </li>
-
-                    <li>
-                        <a href="users-profile.html" className="dropdown-item d-flex align-items-center ">
-                            <i className='bi bi-gear'></i>
-                            <span>Account Settings</span>
-                        </a>
-                    </li>
-                    <li>
-                        <hr className='dropdown-divider' />
-                    </li> */}
-
-                    <li>
-                        <a href="pages-faq.html" className="dropdown-item d-flex align-items-center ">
-                            <i className='bi bi-question-circle'></i>
-                            <span>Need Help?</span>
-                        </a>
-                    </li>
-                    <li>
-                        <hr className='dropdown-divider' />
-                    </li>
-
                     <li onClick={handleLogOut}>
                         <a className="dropdown-item d-flex align-items-center ">
                             <i className='bi bi-arrow-right'></i>
