@@ -39,3 +39,13 @@ export const deleteAllNotifs = () => async (dispatch) => {
         dispatch({ type: "DELETE_ALL_NOTIFS_FAILURE", error: error.message });
     }
 }
+
+export const toggleReadNotif = (id, readStatus) => async (dispatch) => {
+    dispatch({ type: "TOGGLE_READ_NOTIF_START" });
+    try {
+        await NotifApi.updateNotif(id, { read: !readStatus });
+        dispatch({ type: "TOGGLE_READ_NOTIF_SUCCESS", data: { id, read: !readStatus } });
+    } catch (error) {
+        dispatch({ type: "TOGGLE_READ_NOTIF_FAILURE", error: error.message });
+    }
+}
